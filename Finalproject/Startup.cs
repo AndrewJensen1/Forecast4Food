@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Finalproject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Finalproject.Models;
 
 namespace Finalproject
 {
@@ -34,7 +35,8 @@ namespace Finalproject
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            var connection = "Server=.\\SQLExpress;Database=FinalProjectDb;Trusted_Connection=True;ConnectRetryCount=0;";
+            services.AddDbContext<FinalProjectDbContext>(options => options.UseSqlServer(connection));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
