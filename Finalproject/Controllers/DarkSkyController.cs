@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Finalproject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace Finalproject.Controllers
 {
@@ -29,7 +30,7 @@ namespace Finalproject.Controllers
             return client;
         }
 
-        public async Task<IActionResult> Something()
+        public async Task<IActionResult> WeatherView()
         {
             var client = GetHttpClient();
 
@@ -37,6 +38,7 @@ namespace Finalproject.Controllers
             var longitude = TempData["lng"].ToString();
             var response = await client.GetAsync($"{_darkSkyKey}/{latitude},{longitude}"); 
             var result = await response.Content.ReadAsAsync<DarkSky>();
+            //var something = JsonConvert.DeserializeObject<DarkSky>(result.ToString());
 
             return View(result);
         }

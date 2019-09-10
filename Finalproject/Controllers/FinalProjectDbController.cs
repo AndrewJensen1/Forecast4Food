@@ -43,7 +43,7 @@ namespace Finalproject.Controllers
             var name = await response.Content.ReadAsAsync<Location>();
             TempData["lat"] = name.results[0].geometry.location.lat;
             TempData["lng"] = name.results[0].geometry.location.lng;
-            return RedirectToAction("Something", "DarkSky");
+            return RedirectToAction("WeatherView", "DarkSky");
            // return RedirectToAction("GetWeather", "DarkSky", new {latitude = name.results[0].geometry.location.lat, longitude = name.results[0].geometry.location.lng });
         }
 
