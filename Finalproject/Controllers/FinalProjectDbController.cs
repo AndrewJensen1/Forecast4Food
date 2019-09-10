@@ -14,6 +14,13 @@ namespace Finalproject.Controllers
         private readonly FinalProjectDbContext _context;
         private readonly IConfiguration _configuration;
         private readonly string _googleApiKey;
+
+        public FinalProjectDbController(FinalProjectDbContext context, IConfiguration configuration)
+        {
+            _context = context;
+            _configuration = configuration;
+            _googleApiKey = _configuration.GetSection("AppConfiguration")["GoogleAPIKey"];
+        }
         public IActionResult Index()
         {
             return View();
@@ -29,7 +36,7 @@ namespace Finalproject.Controllers
         {
             location.Replace(" ", "+");
             var client = GetHttpClient();
-            var response = await client.GetAsync($"maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key={_googleApiKey}");
+            var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
             var name = await response.Content.ReadAsAsync<Location>();
             return View(name);
         }
