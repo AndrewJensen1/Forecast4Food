@@ -41,12 +41,15 @@ namespace Finalproject.Controllers
             }
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
             var name = await response.Content.ReadAsAsync<Rootobject>();
-            var latitude = name.results[0].geometry.location.lat;
-            var longitude = name.results[0].geometry.location.lng;
-           
-            return View(name);
+          
+
+            return RedirectToAction("Access", new { latitude = name.results[0].geometry.location.lat, longitude = name.results[0].geometry.location.lng});
         }
 
+        //public async Task<IActionResult> Access(float latitude, float longitude)
+        //{
+
+        //}
         
     }
 }
