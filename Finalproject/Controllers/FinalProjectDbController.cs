@@ -40,16 +40,14 @@ namespace Finalproject.Controllers
                 location.Trim().Replace(" ", "+");
             }
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
-            var name = await response.Content.ReadAsAsync<Rootobject>();
-          
+            var name = await response.Content.ReadAsAsync<Location>();
+            var latitude = name.results[0].geometry.location.lat;
+            var longitude = name.results[0].geometry.location.lng;
 
-            return RedirectToAction("Access", new { latitude = name.results[0].geometry.location.lat, longitude = name.results[0].geometry.location.lng});
+            return RedirectToAction("GetWeather", "DarkSky", new {latitude = name.results[0].geometry.location.lat, longitude = name.results[0].geometry.location.lng });
         }
 
-        //public async Task<IActionResult> Access(float latitude, float longitude)
-        //{
-
-        //}
+        
         
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Finalproject.Models
 {
 
-    public class Rootobject
+    public class Location
     {
         public Result[] results { get; set; }
         public string status { get; set; }
@@ -24,12 +24,12 @@ namespace Finalproject.Models
 
     public class Geometry
     {
-        public Location location { get; set; }
+        public Location1 location { get; set; }
         public string location_type { get; set; }
         public Viewport viewport { get; set; }
     }
 
-    public class Location
+    public class Location1
     {
         public float lat { get; set; }
         public float lng { get; set; }
