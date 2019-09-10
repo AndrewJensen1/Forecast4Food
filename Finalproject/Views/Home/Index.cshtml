@@ -2,11 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model IEnumerable<Finalproject.Models.Location>
+@model IEnumerable<Finalproject.Models.Weather>
 
-<form asp-controller="FinalProjectDb" asp-action="Map" >
+<form asp-controller="FinalProjectDb" asp-action="Map">
     <input type="text" name="Location" placeholder="Enter Address" />
     <input type="date" name="Date" />
     <input type="submit" name="Submit" />
 </form>
+
+
 
