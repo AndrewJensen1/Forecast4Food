@@ -8,8 +8,8 @@ namespace Finalproject.Models
 
     public class DarkSky
     {
-        public float latitude { get; set; }
-        public float longitude { get; set; }
+        public decimal latitude { get; set; }
+        public decimal longitude { get; set; }
         public string timezone { get; set; }
         public Currently currently { get; set; }
         public Minutely minutely { get; set; }
@@ -28,18 +28,18 @@ namespace Finalproject.Models
         public int nearestStormBearing { get; set; }
         public int precipIntensity { get; set; }
         public int precipProbability { get; set; }
-        public float temperature { get; set; }
-        public float apparentTemperature { get; set; }
-        public float dewPoint { get; set; }
-        public float humidity { get; set; }
-        public float pressure { get; set; }
-        public float windSpeed { get; set; }
-        public float windGust { get; set; }
+        public decimal temperature { get; set; }
+        public decimal apparentTemperature { get; set; }
+        public decimal dewPoint { get; set; }
+        public decimal humidity { get; set; }
+        public decimal pressure { get; set; }
+        public decimal windSpeed { get; set; }
+        public decimal windGust { get; set; }
         public int windBearing { get; set; }
-        public float cloudCover { get; set; }
+        public decimal cloudCover { get; set; }
         public int uvIndex { get; set; }
         public int visibility { get; set; }
-        public float ozone { get; set; }
+        public decimal ozone { get; set; }
     }
 
     public class Minutely
@@ -52,8 +52,8 @@ namespace Finalproject.Models
     public class DSDatum
     {
         public int time { get; set; }
-        public int precipIntensity { get; set; }
-        public int precipProbability { get; set; }
+        public decimal precipIntensity { get; set; }
+        public decimal precipProbability { get; set; }
     }
 
     public class Hourly
@@ -68,20 +68,20 @@ namespace Finalproject.Models
         public int time { get; set; }
         public string summary { get; set; }
         public string icon { get; set; }
-        public float precipIntensity { get; set; }
-        public float precipProbability { get; set; }
-        public float temperature { get; set; }
-        public float apparentTemperature { get; set; }
-        public float dewPoint { get; set; }
-        public float humidity { get; set; }
-        public float pressure { get; set; }
-        public float windSpeed { get; set; }
-        public float windGust { get; set; }
-        public int windBearing { get; set; }
-        public float cloudCover { get; set; }
-        public int uvIndex { get; set; }
-        public int visibility { get; set; }
-        public float ozone { get; set; }
+        public decimal precipIntensity { get; set; }
+        public decimal precipProbability { get; set; }
+        public decimal temperature { get; set; }
+        public decimal apparentTemperature { get; set; }
+        public decimal dewPoint { get; set; }
+        public decimal humidity { get; set; }
+        public decimal pressure { get; set; }
+        public decimal windSpeed { get; set; }
+        public decimal windGust { get; set; }
+        public decimal windBearing { get; set; }
+        public decimal cloudCover { get; set; }
+        public decimal uvIndex { get; set; }
+        public decimal visibility { get; set; }
+        public decimal ozone { get; set; }
         public string precipType { get; set; }
     }
 
@@ -94,51 +94,51 @@ namespace Finalproject.Models
 
     public class Datum2
     {
-        public int time { get; set; }
+        public decimal time { get; set; }
         public string summary { get; set; }
         public string icon { get; set; }
-        public int sunriseTime { get; set; }
-        public int sunsetTime { get; set; }
-        public float moonPhase { get; set; }
-        public float precipIntensity { get; set; }
-        public float precipIntensityMax { get; set; }
-        public int precipIntensityMaxTime { get; set; }
-        public float precipProbability { get; set; }
+        public decimal sunriseTime { get; set; }
+        public decimal sunsetTime { get; set; }
+        public decimal moonPhase { get; set; }
+        public decimal precipIntensity { get; set; }
+        public decimal precipIntensityMax { get; set; }
+        public decimal precipIntensityMaxTime { get; set; }
+        public decimal precipProbability { get; set; }
         public string precipType { get; set; }
-        public float temperatureHigh { get; set; }
-        public int temperatureHighTime { get; set; }
-        public float temperatureLow { get; set; }
-        public int temperatureLowTime { get; set; }
-        public float apparentTemperatureHigh { get; set; }
-        public int apparentTemperatureHighTime { get; set; }
-        public float apparentTemperatureLow { get; set; }
-        public int apparentTemperatureLowTime { get; set; }
-        public float dewPoint { get; set; }
-        public float humidity { get; set; }
-        public float pressure { get; set; }
-        public float windSpeed { get; set; }
-        public float windGust { get; set; }
-        public int windGustTime { get; set; }
-        public int windBearing { get; set; }
-        public float cloudCover { get; set; }
-        public int uvIndex { get; set; }
-        public int uvIndexTime { get; set; }
-        public float visibility { get; set; }
-        public float ozone { get; set; }
-        public float temperatureMin { get; set; }
-        public int temperatureMinTime { get; set; }
-        public float temperatureMax { get; set; }
-        public int temperatureMaxTime { get; set; }
-        public float apparentTemperatureMin { get; set; }
+        public decimal temperatureHigh { get; set; }
+        public decimal temperatureHighTime { get; set; }
+        public decimal temperatureLow { get; set; }
+        public decimal temperatureLowTime { get; set; }
+        public decimal apparentTemperatureHigh { get; set; }
+        public decimal apparentTemperatureHighTime { get; set; }
+        public decimal apparentTemperatureLow { get; set; }
+        public decimal apparentTemperatureLowTime { get; set; }
+        public decimal dewPoint { get; set; }
+        public decimal humidity { get; set; }
+        public decimal pressure { get; set; }
+        public decimal windSpeed { get; set; }
+        public decimal windGust { get; set; }
+        public decimal windGustTime { get; set; }
+        public decimal windBearing { get; set; }
+        public decimal cloudCover { get; set; }
+        public decimal uvIndex { get; set; }
+        public decimal uvIndexTime { get; set; }
+        public string visibility { get; set; }
+        public decimal ozone { get; set; }
+        public decimal temperatureMin { get; set; }
+        public decimal temperatureMinTime { get; set; }
+        public decimal temperatureMax { get; set; }
+        public decimal temperatureMaxTime { get; set; }
+        public decimal apparentTemperatureMin { get; set; }
         public int apparentTemperatureMinTime { get; set; }
-        public float apparentTemperatureMax { get; set; }
+        public decimal apparentTemperatureMax { get; set; }
         public int apparentTemperatureMaxTime { get; set; }
     }
 
     public class Flags
     {
         public string[] sources { get; set; }
-        public float neareststation { get; set; }
+        public decimal neareststation { get; set; }
         public string units { get; set; }
     }
 
