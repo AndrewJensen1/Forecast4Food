@@ -34,11 +34,19 @@ namespace Finalproject.Controllers
 
         public async Task<IActionResult> Map(string location)
         {
-            location.Replace(" ", "+");
             var client = GetHttpClient();
+            if (!string.IsNullOrWhiteSpace(location))
+            {
+                location.Trim().Replace(" ", "+");
+            }
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
-            var name = await response.Content.ReadAsAsync<Location>();
+            var name = await response.Content.ReadAsAsync<Rootobject>();
+            var latitude = name.results[0].geometry.location.lat;
+            var longitude = name.results[0].geometry.location.lng;
+           
             return View(name);
         }
+
+        
     }
 }
