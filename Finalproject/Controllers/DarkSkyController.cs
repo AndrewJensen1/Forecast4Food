@@ -21,6 +21,7 @@ namespace Finalproject.Controllers
             _configuration = configuration;
             _darkSkyKey = _configuration.GetSection("AppConfiguration")["DarkSkyAPIKey"];
         }
+
         public static HttpClient GetHttpClient()
         {
             var client = new HttpClient();
@@ -34,8 +35,7 @@ namespace Finalproject.Controllers
 
             var latitude = TempData["lat"].ToString();
             var longitude = TempData["lng"].ToString();
-            var response = await client.GetAsync($"{_darkSkyKey}/{latitude},{longitude}");
-            //var result = await response.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"{_darkSkyKey}/{latitude},{longitude}"); 
             var result = await response.Content.ReadAsAsync<DarkSky>();
 
             return View(result);
