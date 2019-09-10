@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "WeatherView";
+}
+@model DarkSky
+
+<h1>WeatherView</h1>
+
+<div class="table">
+    <table>
+        <tr>
+            <td>
+
+                @Model.currently.temperature
+                @Model.currently.humidity
+                @Model.currently.windSpeed
+                @Model.currently.precipProbability
+                @Model.currently.summary
+
+            </td>
+        </tr>
+    </table>
+</div>
