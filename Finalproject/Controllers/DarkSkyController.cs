@@ -20,6 +20,6 @@ namespace Finalproject.Controllers
             _configuration = configuration;
             _darkSkyKey = _configuration.GetSection("AppConfiguration")["DarkSkyAPIKey"];
         }
-        // LOOK AT ME I AM SUPER COOL MAKING CHAnges yay me!!!!
+       // LOOK AT ME CHANGING SH*T!
     }
 }
