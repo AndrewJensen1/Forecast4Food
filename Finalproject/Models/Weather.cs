@@ -16,18 +16,18 @@ namespace Finalproject.Models
         public Hourly hourly { get; set; }
         public Daily daily { get; set; }
         public Flags flags { get; set; }
-        public int offset { get; set; }
+        public decimal offset { get; set; }
     }
 
     public class Currently
     {
-        public int time { get; set; }
+        public decimal time { get; set; }
         public string summary { get; set; }
         public string icon { get; set; }
-        public int nearestStormDistance { get; set; }
-        public int nearestStormBearing { get; set; }
-        public int precipIntensity { get; set; }
-        public int precipProbability { get; set; }
+        public decimal nearestStormDistance { get; set; }
+        public decimal nearestStormBearing { get; set; }
+        public decimal precipIntensity { get; set; }
+        public decimal precipProbability { get; set; }
         public decimal temperature { get; set; }
         public decimal apparentTemperature { get; set; }
         public decimal dewPoint { get; set; }
@@ -35,10 +35,10 @@ namespace Finalproject.Models
         public decimal pressure { get; set; }
         public decimal windSpeed { get; set; }
         public decimal windGust { get; set; }
-        public int windBearing { get; set; }
+        public decimal windBearing { get; set; }
         public decimal cloudCover { get; set; }
-        public int uvIndex { get; set; }
-        public int visibility { get; set; }
+        public decimal uvIndex { get; set; }
+        public decimal visibility { get; set; }
         public decimal ozone { get; set; }
     }
 
@@ -51,7 +51,7 @@ namespace Finalproject.Models
 
     public class DSDatum
     {
-        public int time { get; set; }
+        public decimal time { get; set; }
         public decimal precipIntensity { get; set; }
         public decimal precipProbability { get; set; }
     }
@@ -65,7 +65,7 @@ namespace Finalproject.Models
 
     public class DSDatum1
     {
-        public int time { get; set; }
+        public decimal time { get; set; }
         public string summary { get; set; }
         public string icon { get; set; }
         public decimal precipIntensity { get; set; }
@@ -130,9 +130,9 @@ namespace Finalproject.Models
         public decimal temperatureMax { get; set; }
         public decimal temperatureMaxTime { get; set; }
         public decimal apparentTemperatureMin { get; set; }
-        public int apparentTemperatureMinTime { get; set; }
+        public decimal apparentTemperatureMinTime { get; set; }
         public decimal apparentTemperatureMax { get; set; }
-        public int apparentTemperatureMaxTime { get; set; }
+        public decimal apparentTemperatureMaxTime { get; set; }
     }
 
     public class Flags
