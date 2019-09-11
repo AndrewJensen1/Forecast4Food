@@ -4,6 +4,7 @@
 }
 @model DarkSky
 
+
 <h1>WeatherView</h1>
 
 <div class="table">
@@ -20,4 +21,11 @@
             </td>
         </tr>
     </table>
+</div>
+
+<div>
+    <form action="/XYZ/RestaurantSearch" method="get">
+        <h1>If you would like to see the restaurants for this type of weather click here</h1>
+        <input type="submit" name="name" value="submit" />
+    </form>
 </div>

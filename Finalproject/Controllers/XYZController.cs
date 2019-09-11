@@ -27,17 +27,35 @@ namespace Finalproject.Controllers
             client.BaseAddress = new Uri("https://us-restaurant-menus.p.rapidapi.com");
             return client;
         }
-
+        [HttpGet]
         public async Task<IActionResult> RestaurantSearch()
         {
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
             var lat = TempData["latitude"].ToString();
+            TempData.Keep("latitude");
             var lon = TempData["longitude"].ToString();
-            //var searchRange = TempData["distance"].ToString();
+            TempData.Keep("longitude");
+
 
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance=1");
+            var result = await response.Content.ReadAsAsync<XYZMenu>();
+
+            return View(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RestaurantSearch(int num)
+        {
+            var client = GetHttpClient();
+            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
+
+            var lat = TempData["latitude"].ToString();
+            TempData.Keep("latitude");
+            var lon = TempData["longitude"].ToString();
+            TempData.Keep("longitude");
+
+            var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance={num}");
             var result = await response.Content.ReadAsAsync<XYZMenu>();
 
             return View(result);
