@@ -2,18 +2,28 @@
 @{
     ViewData["Title"] = "RestaurantSearch";
 }
-@model XYZMenu
+@model Finalproject.Models.XYZMenu
 
 <h1>RestaurantSearch</h1>
 <h1>Please select your search distance</h1>
 <div>
     <form action="/XYZ/RestaurantSearch" method="post">
-        <input type="number" name="num" value="1" />
+        <input type="number" name="num" value="0" />
         <input type="submit" name="num" value="submit" />
     </form>
 </div>
 <table>
-    <tr>
-        <td></td>
-    </tr>
+
+    @foreach (var item in Model.result.data)
+    {
+        <tr>
+            <td>@item.restaurant_name</td>
+            <td>@item.cuisines</td>
+            <td>@item.address</td>
+            <td>@item.restaurant_phone</td>
+            <td>@item.hours</td>
+            <td>@item.menus</td>
+        </tr>
+    }
+
 </table>
