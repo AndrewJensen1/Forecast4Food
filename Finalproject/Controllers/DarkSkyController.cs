@@ -39,8 +39,7 @@ namespace Finalproject.Controllers
             var longitude = TempData["lng"].ToString();
             TempData["longitude"] = TempData["lng"];
             var response = await client.GetAsync($"{_darkSkyKey}/{latitude},{longitude}"); 
-            var result = await response.Content.ReadAsAsync<DarkSky>();
-            //var something = JsonConvert.DeserializeObject<DarkSky>(result.ToString());
+            var result = await response.Content.ReadAsAsync<DarkSky>();            
 
             return View(result);
         }
