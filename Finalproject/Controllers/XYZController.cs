@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Finalproject.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,27 @@ namespace Finalproject.Controllers
             _context = context;
             _configuration = configuration;
             _xyzKey = _configuration.GetSection("AppConfiguration")["XYZMenusAPIKey"];
+        }
+        public static HttpClient GetHttpClient()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("https://us-restaurant-menus.p.rapidapi.com");
+            return client;
+        }
+
+        public async Task<IActionResult> RestaurantSearch()
+        {
+            var client = GetHttpClient();
+            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
+
+            var lat = TempData["latitude"].ToString();
+            var lon = TempData["longitude"].ToString();
+            //var searchRange = TempData["distance"].ToString();
+
+            var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance=1");
+            var result = await response.Content.ReadAsAsync<XYZMenu>();
+
+            return View(result);
         }
     }
 }
