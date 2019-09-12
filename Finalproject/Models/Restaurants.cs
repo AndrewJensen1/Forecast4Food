@@ -27,7 +27,7 @@ namespace Finalproject.Models
         public string hours { get; set; }
         public Address address { get; set; }
         public string restaurant_phone { get; set; }
-        public int restaurant_id { get; set; }
+        public long restaurant_id { get; set; }
         public string price_range { get; set; }
         public object[] menus { get; set; }
         public int price_range_100 { get; set; }
