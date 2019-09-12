@@ -35,10 +35,10 @@ namespace Finalproject.Controllers
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
-            var lat = TempData["latitude"].ToString();
-            TempData.Keep("latitude");
-            var lon = TempData["longitude"].ToString();
-            TempData.Keep("longitude");
+            var lat = TempData["lat"].ToString();
+            TempData.Keep("lat");
+            var lon = TempData["lng"].ToString();
+            TempData.Keep("lng");
 
 
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance=1");
@@ -53,10 +53,10 @@ namespace Finalproject.Controllers
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
-            var lat = TempData["latitude"].ToString();
-            TempData.Keep("latitude");
-            var lon = TempData["longitude"].ToString();
-            TempData.Keep("longitude");
+            var lat = TempData["lat"].ToString();
+            TempData.Keep("lat");
+            var lon = TempData["lng"].ToString();
+            TempData.Keep("lng");
 
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance={num}");
             var result = await response.Content.ReadAsAsync<XYZMenu>();
