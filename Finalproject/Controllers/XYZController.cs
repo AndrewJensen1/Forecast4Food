@@ -11,7 +11,7 @@ namespace Finalproject.Controllers
 {
     public class XYZController : Controller
     {
-       private readonly FinalProjectDbContext _context;
+        private readonly FinalProjectDbContext _context;
         private readonly IConfiguration _configuration;
         private readonly string _xyzKey;
         
@@ -21,12 +21,14 @@ namespace Finalproject.Controllers
             _configuration = configuration;
             _xyzKey = _configuration.GetSection("AppConfiguration")["XYZMenusAPIKey"];
         }
+
         public static HttpClient GetHttpClient()
         {
             var client = new HttpClient();
             client.BaseAddress = new Uri("https://us-restaurant-menus.p.rapidapi.com");
             return client;
         }
+
         [HttpGet]
         public async Task<IActionResult> RestaurantSearch()
         {
@@ -44,6 +46,7 @@ namespace Finalproject.Controllers
 
             return View(result);
         }
+
         [HttpPost]
         public async Task<IActionResult> RestaurantSearch(int num)
         {
@@ -58,7 +61,9 @@ namespace Finalproject.Controllers
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance={num}");
             var result = await response.Content.ReadAsAsync<XYZMenu>();
 
+           
             return View(result);
         }
+
     }
 }

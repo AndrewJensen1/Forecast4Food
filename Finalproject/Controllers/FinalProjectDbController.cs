@@ -21,10 +21,12 @@ namespace Finalproject.Controllers
             _configuration = configuration;
             _googleApiKey = _configuration.GetSection("AppConfiguration")["GoogleAPIKey"];
         }
+        
         public IActionResult Index()
         {
             return View();
         }
+        
         public static HttpClient GetHttpClient()
         {
             var client = new HttpClient();
@@ -41,14 +43,57 @@ namespace Finalproject.Controllers
             }
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
             var name = await response.Content.ReadAsAsync<Location>();
+
             TempData["lat"] = name.results[0].geometry.location.lat;
             TempData["lng"] = name.results[0].geometry.location.lng;
+
+
             return RedirectToAction("WeatherView", "DarkSky");
-           // return RedirectToAction("GetWeather", "DarkSky", new {latitude = name.results[0].geometry.location.lat, longitude = name.results[0].geometry.location.lng });
+
+            return RedirectToAction("WeatherView", "DarkSky");
+          
+
         }
 
+        public IActionResult AddFavorite(Datum datum, Currently weather)
+        {
+            AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
+            UserPlanner userPlanner = new UserPlanner();
 
+            if (ModelState.IsValid)
+            {
+                userPlanner.UserId = thisUser.Id;
+                userPlanner.Restaurants = datum.restaurant_name;
+                userPlanner.Dates = null;                              //<<<<<<<<
+                userPlanner.Notes = null;                             //<<<<<<<<<This is what gets added to userPlanner 
+                userPlanner.Weather = weather.summary;               //<<<<<<<<<<when user saves favorite. Need to 
+                userPlanner.Events = null;                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
+
+                _context.UserPlanner.Add(userPlanner);
+                _context.SaveChanges();
+                return RedirectToAction("UserPlanner");
+            }
+
+            return RedirectToAction("RestaurantSearch","XYZ");
+        }
         
+        public IActionResult UserPlanner()
+        {
+            AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
+            List<UserPlanner> userPlanner = _context.UserPlanner.Where(u => u.UserId == thisUser.Id).ToList();
+            return View(userPlanner);
+        }
+
+        public IActionResult RemovePlanner(UserPlanner userPlanner)
+        {
+            if(userPlanner != null)
+            {
+                _context.UserPlanner.Remove(userPlanner);
+                _context.SaveChanges();
+                return RedirectToAction("UserPlanner");
+            }
+            return RedirectToAction("UserPlanner");
+        }
         
     }
 }
