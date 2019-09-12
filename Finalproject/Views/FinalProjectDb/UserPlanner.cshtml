@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "UserPlanner";
+}
+
+<h1>UserPlanner</h1>
+
+@model IEnumerable<UserPlanner>
+
+<table class="table">
+    <tr>
+        <th>Notes</th>
+        <th>Weather</th>
+        <th>Restaurants</th>
+        <th>Dates</th>
+        <th>Events</th>
+    </tr>
+    @foreach(var item in Model)
+     {
+        <tr>
+            <td>@item.Notes</td>
+            <td>@item.Weather</td>
+            <td>@item.Restaurants</td>
+            <td>@item.Dates</td>
+            <td>@item.Events</td>
+            <td>@Html.ActionLink("Remove from List", "RemovePlanner", "FinalProjectDb", item)</td>
+        </tr>
+     }
+</table>

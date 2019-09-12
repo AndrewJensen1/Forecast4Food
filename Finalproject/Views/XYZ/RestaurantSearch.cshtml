@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "RestaurantSearch";
+}
+@model IEnumerable<Datum>
+
+<h1>RestaurantSearch</h1>
+<h1>Please select your search distance</h1>
+<div>
+    <form action="/XYZ/RestaurantSearch" method="post">
+        <input type="number" name="num" />
+        <input type="submit" value="submit" />
+    </form>
+</div>
+<table class="table table-bordered table-active">
+    <tr>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Phone</td>
+        <td>Hours</td>
+        <td>Cuisines</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.restaurant_name</td>
+            <td>@item.address.formatted</td>
+            <td>@item.restaurant_phone</td>
+            <td>@item.hours</td>
+            <td>
+                @foreach (var cuisines in item.cuisines)
+                {
+                    <p>@cuisines</p>
+                }
+            </td>
+            <td>@Html.ActionLink("Add to Planner", "AddFavorite", "FinalProjectDb", item)</td>
+        </tr>
+    }
+</table>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Finalproject.Models
 {
 
-    public class XYZMenuAPI
+    public class XYZMenu
     {
         public Result result { get; set; }
     }

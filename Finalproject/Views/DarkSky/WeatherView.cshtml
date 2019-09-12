@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "WeatherView";
+}
+@model DarkSky
+
+
+<h1>WeatherView</h1>
+
+<div class="table">
+    <table>
+        <tr>
+            <td>
+
+                @Model.currently.temperature
+                @Model.currently.humidity
+                @Model.currently.windSpeed
+                @Model.currently.precipProbability
+                @Model.currently.summary
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+<h3>If you would like to see the restaurants for this type of weather click here</h3>
+<div>
+    <form action="/XYZ/RestaurantSearch" method="post">
+       Enter Search Radius: <input type="number" name="num" />
+        <input type="submit" name="name" value="submit" />
+    </form>
+</div>
