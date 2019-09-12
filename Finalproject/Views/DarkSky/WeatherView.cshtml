@@ -6,7 +6,6 @@
 
 
 <h1>WeatherView</h1>
-
 <div class="table">
     <table>
         <tr>
@@ -23,13 +22,70 @@
         </tr>
     </table>
 </div>
+@{
+    if (Model.currently.temperature >= 80 && Model.currently.summary.Contains("clear"))
+    {
+        <h3>
+            It looks like its gonna be hot and clear day on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
 
 
-<h1>If you would like to see the restaurants for this type of weather click here</h1>
-
-<div>
-    <form action="/XYZ/RestaurantSearch" method="post">
-       Enter Search Radius: <input type="number" name="num" />
-        <input type="submit" name="name" value="submit" />
-    </form>
-</div>
+    }
+    else if (Model.currently.temperature >= 80 && Model.currently.summary.Contains("rain"))
+    {
+        <h3>
+            It looks like its gonna be hot and rainy on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+    else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.Contains("rain"))
+    {
+        <h3>
+            It looks like its gonna be warm and rainy on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+    else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.Contains("clear"))
+    {
+        <h3>
+            It looks like its gonna be clear and warm on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+    else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.Contains("rain"))
+    {
+        <h3>
+            It looks like its gonna be pretty chilly and rainy on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+    else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.Contains("clear"))
+    {
+        <h3>
+            It looks like its gonna be pretty chilly clear on this day. Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+    else if (Model.currently.temperature < 32)
+    {
+        <h3>
+            It looks like its gonna be freezing today! Would you like to see a list
+            of nearby restaurants we recommend?
+        </h3>
+        @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
+        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+    }
+}
