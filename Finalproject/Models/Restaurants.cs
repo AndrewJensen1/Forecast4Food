@@ -8,7 +8,7 @@ namespace Finalproject.Models
 
     public class XYZMenu
     {
-        public Result result { get; set; }
+        public Restaurant result { get; set; }
     }
 
     public class Restaurant

@@ -11,7 +11,7 @@ namespace Finalproject.Controllers
 {
     public class XYZController : Controller
     {
-       private readonly FinalProjectDbContext _context;
+        private readonly FinalProjectDbContext _context;
         private readonly IConfiguration _configuration;
         private readonly string _xyzKey;
         
@@ -60,6 +60,7 @@ namespace Finalproject.Controllers
 
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance={num}");
             var result = await response.Content.ReadAsAsync<XYZMenu>();
+
            
             return View(result);
         }

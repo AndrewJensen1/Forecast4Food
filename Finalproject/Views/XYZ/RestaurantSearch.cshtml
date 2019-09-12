@@ -2,7 +2,10 @@
 @{
     ViewData["Title"] = "RestaurantSearch";
 }
+
 @model IEnumerable<Datum>
+=======
+
 
 <h1>RestaurantSearch</h1>
 <h1>Please select your search distance</h1>
@@ -21,7 +24,10 @@
         <td>Cuisines</td>
     </tr>
 
+
     @foreach (var item in Model)
+=======
+
     {
         <tr>
             <td>@item.restaurant_name</td>
@@ -35,6 +41,7 @@
                 }
             </td>
             <td>@Html.ActionLink("Add to Planner", "AddFavorite", "FinalProjectDb", item)</td>
+
         </tr>
     }
 </table>

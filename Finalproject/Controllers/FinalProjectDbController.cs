@@ -21,10 +21,12 @@ namespace Finalproject.Controllers
             _configuration = configuration;
             _googleApiKey = _configuration.GetSection("AppConfiguration")["GoogleAPIKey"];
         }
+        
         public IActionResult Index()
         {
             return View();
         }
+        
         public static HttpClient GetHttpClient()
         {
             var client = new HttpClient();
@@ -45,7 +47,12 @@ namespace Finalproject.Controllers
             TempData["lat"] = name.results[0].geometry.location.lat;
             TempData["lng"] = name.results[0].geometry.location.lng;
 
+
             return RedirectToAction("WeatherView", "DarkSky");
+
+            return RedirectToAction("WeatherView", "DarkSky");
+          
+
         }
 
         public IActionResult AddFavorite(Datum datum, Currently weather)
