@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Finalproject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -34,13 +35,14 @@ namespace Finalproject.Controllers
             return client;
         }
 
-        public async Task<IActionResult> Map(string location)
+        public async Task<IActionResult> Map(string location, DateTime dayy)
         {
             var client = GetHttpClient();
             if (!string.IsNullOrWhiteSpace(location))
             {
                 location.Trim().Replace(" ", "+");
             }
+            TempData["day"] = dayy.ToString("yyyy-MM-ddThh:mm:ss");
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
             var name = await response.Content.ReadAsAsync<Location>();
 
@@ -50,11 +52,9 @@ namespace Finalproject.Controllers
 
             return RedirectToAction("WeatherView", "DarkSky");
 
-            return RedirectToAction("WeatherView", "DarkSky");
           
-
         }
-
+        [Authorize]
         public IActionResult AddFavorite(Datum datum, Currently weather)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();

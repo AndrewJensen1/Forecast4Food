@@ -32,16 +32,16 @@ namespace Finalproject.Controllers
 
         public async Task<IActionResult> WeatherView()
         {
-            var client = GetHttpClient();
+            var client = GetHttpClient();     
 
-            var latitude = TempData["lat"].ToString();
-            TempData["latitude"] = TempData["lat"];
-            var longitude = TempData["lng"].ToString();
-            TempData["longitude"] = TempData["lng"];
-            var response = await client.GetAsync($"{_darkSkyKey}/{latitude},{longitude}"); 
-            var result = await response.Content.ReadAsAsync<DarkSky>();            
+            var response = await client.GetAsync($"{_darkSkyKey}/{TempData["lat"]},{TempData["lng"]},{TempData["day"]}");
+            var result = await response.Content.ReadAsAsync<DarkSky>();
+
+            TempData.Keep("lat");
+            TempData.Keep("lng");
 
             return View(result);
         }
+
     }
 }

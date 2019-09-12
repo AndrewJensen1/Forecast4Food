@@ -3,9 +3,7 @@
     ViewData["Title"] = "RestaurantSearch";
 }
 
-@model IEnumerable<Datum>
-=======
-
+@model Finalproject.Models.XYZMenu
 
 <h1>RestaurantSearch</h1>
 <h1>Please select your search distance</h1>
@@ -25,9 +23,7 @@
     </tr>
 
 
-    @foreach (var item in Model)
-=======
-
+    @foreach (var item in Model.result.data)
     {
         <tr>
             <td>@item.restaurant_name</td>
