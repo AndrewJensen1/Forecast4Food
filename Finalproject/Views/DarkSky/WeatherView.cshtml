@@ -32,7 +32,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
 
 
     }
@@ -43,7 +43,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.ToLower().Contains("rain"))
     {
@@ -52,7 +52,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.ToLower().Contains("clear"))
     {
@@ -61,7 +61,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.ToLower().Contains("rain"))
     {
@@ -70,7 +70,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.ToLower().Contains("clear"))
     {
@@ -79,7 +79,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else if (Model.currently.temperature < 32)
     {
@@ -88,7 +88,7 @@
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
     else
     {
@@ -96,6 +96,6 @@
             Would you like to see a list of nearby restaurants?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")
-        @Html.ActionLink("No, take me back to location search.", "Map", "FinalProjectDb")
+        @Html.ActionLink("No, take me back to location search.", "Index", "FinalProjectDb")
     }
 }
