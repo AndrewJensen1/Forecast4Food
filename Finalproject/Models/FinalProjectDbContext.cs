@@ -22,7 +22,6 @@ namespace Finalproject.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<UserPlanner> UserPlanner { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,7 +29,7 @@ namespace Finalproject.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=FinalProjectDb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=FinalProjectDb;Trusted_Connection=True;");
             }
         }
 
@@ -140,22 +139,6 @@ namespace Finalproject.Models
                 entity.Property(e => e.UserName).HasMaxLength(256);
             });
 
-            modelBuilder.Entity<Favorites>(entity =>
-            {
-                entity.Property(e => e.Dates).HasMaxLength(10);
-
-                entity.Property(e => e.Restaurant).HasMaxLength(100);
-
-                entity.Property(e => e.UserId).HasMaxLength(450);
-
-                entity.Property(e => e.Weather).HasMaxLength(100);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Favorites)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Favorites__UserI__75A278F5");
-            });
-
             modelBuilder.Entity<UserPlanner>(entity =>
             {
                 entity.Property(e => e.Dates).HasMaxLength(10);
@@ -173,7 +156,7 @@ namespace Finalproject.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserPlanner)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__UserPlann__UserI__787EE5A0");
+                    .HasConstraintName("FK__UserPlann__UserI__6FE99F9F");
             });
         }
     }

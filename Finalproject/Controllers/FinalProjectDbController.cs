@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace Finalproject.Controllers
-{
+{ 
+    [Authorize]
     public class FinalProjectDbController : Controller
     {
         private readonly FinalProjectDbContext _context;
@@ -49,12 +50,9 @@ namespace Finalproject.Controllers
             TempData["lat"] = name.results[0].geometry.location.lat;
             TempData["lng"] = name.results[0].geometry.location.lng;
 
-
             return RedirectToAction("WeatherView", "DarkSky");
-
-          
         }
-        [Authorize]
+
         public IActionResult AddFavorite(Datum datum, Currently weather)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
@@ -74,9 +72,9 @@ namespace Finalproject.Controllers
                 return RedirectToAction("UserPlanner");
             }
 
-            return RedirectToAction("RestaurantSearch","XYZ");
+            return RedirectToAction("RestaurantSearch", "XYZ");
         }
-        
+
         public IActionResult UserPlanner()
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
@@ -86,7 +84,7 @@ namespace Finalproject.Controllers
 
         public IActionResult RemovePlanner(UserPlanner userPlanner)
         {
-            if(userPlanner != null)
+            if (userPlanner != null)
             {
                 _context.UserPlanner.Remove(userPlanner);
                 _context.SaveChanges();
@@ -94,6 +92,6 @@ namespace Finalproject.Controllers
             }
             return RedirectToAction("UserPlanner");
         }
-        
+
     }
 }
