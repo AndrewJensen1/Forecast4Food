@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Finalproject.Controllers
 { 
-    [Authorize]
+    
     public class FinalProjectDbController : Controller
     {
         private readonly FinalProjectDbContext _context;
@@ -52,7 +52,7 @@ namespace Finalproject.Controllers
 
             return RedirectToAction("WeatherView", "DarkSky");
         }
-
+        [Authorize]
         public IActionResult AddFavorite(Datum datum, Currently weather)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
@@ -74,14 +74,14 @@ namespace Finalproject.Controllers
 
             return RedirectToAction("RestaurantSearch", "XYZ");
         }
-
+        [Authorize]
         public IActionResult UserPlanner()
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
             List<UserPlanner> userPlanner = _context.UserPlanner.Where(u => u.UserId == thisUser.Id).ToList();
             return View(userPlanner);
         }
-
+        [Authorize]
         public IActionResult RemovePlanner(UserPlanner userPlanner)
         {
             if (userPlanner != null)
