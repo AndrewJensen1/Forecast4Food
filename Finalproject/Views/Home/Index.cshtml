@@ -2,8 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 
+<h1>Forecast4Food</h1>
+<h3>Please enter a location and date.</h3>
 <form asp-controller="FinalProjectDb" asp-action="Map">
-    <input type="text" name="Location" placeholder="Enter Address" />
+    <input type="text" name="Location" placeholder="Enter Location" />
     <input type="date" name="dayy" value="" />
     <input type="submit" name="Submit" value="Submit" />
 </form>
