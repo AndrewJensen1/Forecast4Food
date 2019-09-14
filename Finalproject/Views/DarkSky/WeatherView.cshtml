@@ -9,6 +9,7 @@
 <div class="table">
     <table>
         <tr>
+            <th></th>
             <th>Temperature</th>
             <th>Humidity</th>
             <th>Wind Speed</th>
@@ -16,11 +17,28 @@
             <th>Summary</th>
         </tr>
         <tr>
+            <td>Weather for date selected</td>
             <td> @Model.currently.temperature</td>
             <td> @Model.currently.humidity</td>
             <td> @Model.currently.windSpeed</td>
             <td> @Model.currently.precipProbability</td>
             <td> @Model.currently.summary</td>
+        </tr>
+        <tr>
+            <td>One Year Before</td>
+            <td>@ViewBag.oneYearTemp</td>
+            <td>@ViewBag.oneYearHumid</td>
+            <td>@ViewBag.oneYearWind</td>
+            <td>@ViewBag.oneYearPrecip</td>
+            <td>@ViewBag.oneYearSumm</td>
+        </tr>
+        <tr>
+            <td>Five Year Before</td>
+            <td>@ViewBag.fiveYearTemp</td>
+            <td>@ViewBag.fiveYearHumid</td>
+            <td>@ViewBag.fiveYearWind</td>
+            <td>@ViewBag.fiveYearPrecip</td>
+            <td>@ViewBag.fiveYearSumm</td>
         </tr>
     </table>
 </div>
@@ -84,7 +102,7 @@
     else if (Model.currently.temperature < 32)
     {
         <h3>
-            It looks like its gonna be freezing today! Would you like to see a list
+            It looks like its gonna be freezing on this day! Would you like to see a list
             of nearby restaurants we recommend?
         </h3>
         @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ")

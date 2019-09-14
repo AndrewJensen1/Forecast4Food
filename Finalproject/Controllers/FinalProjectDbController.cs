@@ -38,6 +38,8 @@ namespace Finalproject.Controllers
 
         public async Task<IActionResult> Map(string location, DateTime dayy)
         {
+            TempData["yearPast"] = dayy.AddYears(-1).ToString("yyyy-MM-ddThh:mm:ss");
+            TempData["yearsPast"] = dayy.AddYears(-5).ToString("yyyy-MM-ddThh:mm:ss");
             var client = GetHttpClient();
             if (!string.IsNullOrWhiteSpace(location))
             {
@@ -53,7 +55,7 @@ namespace Finalproject.Controllers
             return RedirectToAction("WeatherView", "DarkSky");
         }
         [Authorize]
-        public IActionResult AddFavorite(Datum datum, Currently weather)
+        public IActionResult AddFavorite(Datum datum, DSDatum1 weather)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
             UserPlanner userPlanner = new UserPlanner();
