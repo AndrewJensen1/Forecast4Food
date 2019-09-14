@@ -47,6 +47,7 @@ namespace Finalproject.Controllers
             TempData.Keep("yearsPast");
             TempData.Keep("lat");
             TempData.Keep("lng");
+            TempData["weather"] = result.currently.summary;
 
             ViewBag.oneYearTemp = resultOneYear.currently.temperature;
             ViewBag.oneYearHumid = resultOneYear.currently.humidity;

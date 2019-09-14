@@ -55,7 +55,7 @@ namespace Finalproject.Controllers
             return RedirectToAction("WeatherView", "DarkSky");
         }
         [Authorize]
-        public IActionResult AddFavorite(Datum datum, DSDatum1 weather)
+        public IActionResult AddFavorite(Datum datum, DarkSky weather)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
             UserPlanner userPlanner = new UserPlanner();
@@ -66,7 +66,7 @@ namespace Finalproject.Controllers
                 userPlanner.Restaurants = datum.restaurant_name;
                 userPlanner.Dates = null;                              //<<<<<<<<
                 userPlanner.Notes = null;                             //<<<<<<<<<This is what gets added to userPlanner 
-                userPlanner.Weather = weather.summary;               //<<<<<<<<<<when user saves favorite. Need to 
+                userPlanner.Weather = null;                          //<<<<<<<<<<when user saves favorite. Need to 
                 userPlanner.Events = null;                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
 
                 _context.UserPlanner.Add(userPlanner);
