@@ -29,9 +29,10 @@ namespace Finalproject.Controllers
             return client;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> RestaurantSearch()
+
+        public async Task<IActionResult> RestaurantSearch(Currently IdontKnow)
         {
+            TempData["somethingWeather"] = IdontKnow;
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
@@ -50,6 +51,7 @@ namespace Finalproject.Controllers
         [HttpPost]
         public async Task<IActionResult> RestaurantSearch(int num)
         {
+
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
@@ -61,7 +63,7 @@ namespace Finalproject.Controllers
             var response = await client.GetAsync($"/restaurants/search?lat={lat}&lon={lon}&distance={num}");
             var result = await response.Content.ReadAsAsync<XYZMenu>();
 
-           
+
             return View(result);
         }
 
