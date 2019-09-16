@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "EditNote";
+}
+@model Finalproject.Models.UserPlanner
+
+<h1>Edit Note</h1>
+
+<form asp-action="EditNote" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    New Note: <input type="text" name="note" value="" />
+    <input type="submit" value="Edit Note!" />
+</form>

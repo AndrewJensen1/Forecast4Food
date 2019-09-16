@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "AddNote";
+}
+
+@model UserPlanner
+
+<h1>Add Note</h1>
+
+<form asp-action="AddNote" method="post">
+    <input type="hidden" name="planner" value="@Model" />
+    New Note: <input type="text" name="note" value="@Model.Notes" />
+    <input type="submit" value="Add Note!" />
+</form>
