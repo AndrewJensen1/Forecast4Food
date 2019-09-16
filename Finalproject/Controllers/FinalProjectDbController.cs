@@ -95,5 +95,86 @@ namespace Finalproject.Controllers
             return RedirectToAction("UserPlanner");
         }
 
+        [HttpGet]
+        public IActionResult EditNote(int Id)
+        {
+            UserPlanner found = _context.UserPlanner.Find(Id);
+            if (found != null)
+            {
+                return View(found);
+            }
+            else
+            {
+                return RedirectToAction("UserPlanner");
+            }
+        }
+        [HttpPost]
+        public IActionResult EditNote(int Id, string note)
+        {
+            UserPlanner found = _context.UserPlanner.Find(Id);
+            if (ModelState.IsValid && note != null)
+            {
+                found.Notes = note;
+
+                _context.Entry(found).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.UserPlanner.Update(found);
+                _context.SaveChanges();
+                return RedirectToAction("UserPlanner");
+            }
+            else
+            {
+                return RedirectToAction("UserPlanner");
+            }
+        }
+
+
+        public IActionResult AddNote(UserPlanner users)
+        {
+            return View(users);
+        }
+
+        [HttpPost]
+        public IActionResult AddNote(UserPlanner planner, string note)
+        { 
+            planner.Notes = note;
+
+            _context.UserPlanner.Add(planner);
+            _context.SaveChanges();
+
+            return RedirectToAction("UserPlanner");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateNote(int Id)
+        {
+            UserPlanner found = _context.UserPlanner.Find(Id);
+            if (found != null)
+            {
+                return View(found);
+            }
+            else
+            {
+                return RedirectToAction("UserPlanner");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult UpdateNote(UserPlanner updatedNote)
+        {
+            UserPlanner found = _context.UserPlanner.Find(updatedNote.UserId);
+            if (ModelState.IsValid && found != null)
+            {
+                found.UserId = updatedNote.UserId;
+                found.Notes = updatedNote.Notes;
+
+                _context.Entry(found).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.Update(found);
+                _context.SaveChanges();
+
+                return RedirectToAction("UserPlanner");
+            }
+            return View("UpdateNote", found);
+        }
+
     }
 }

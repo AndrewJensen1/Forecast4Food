@@ -10,21 +10,30 @@
 <table class="table">
     <tr>
         <th>Notes</th>
+        <th>Edit</th>
+        <th>Add</th>
         <th>Weather</th>
         <th>Restaurants</th>
         <th>Dates</th>
         <th>Events</th>
     </tr>
-    @foreach(var item in Model)
-     {
+    @foreach (var item in Model)
+    {
         <tr>
-            <td>@item.Notes<input type="text" /><input type="submit" value="Submit"/></td>
+            <td>
+                @item.Notes
+            </td>
+            <td>
+                @Html.ActionLink("Edit Note", "EditNote", "FinalProjectDb", item)
+            </td>
+            <td>
+                @Html.ActionLink("Add Note", "AddNote", "FinalProjectDb", item)
+            </td>
             <td>@item.Weather</td>
             <td>@item.Restaurants</td>
             <td>@item.Dates</td>
             <td>@item.Events</td>
             <td>@Html.ActionLink("Remove from List", "RemovePlanner", "FinalProjectDb", item)</td>
         </tr>
-     }
+    }
 </table>
-    
