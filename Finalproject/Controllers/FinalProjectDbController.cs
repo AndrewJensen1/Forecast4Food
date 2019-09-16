@@ -66,7 +66,7 @@ namespace Finalproject.Controllers
                 userPlanner.Restaurants = datum.restaurant_name;
                 userPlanner.Dates = null;                              //<<<<<<<<
                 userPlanner.Notes = null;                             //<<<<<<<<<This is what gets added to userPlanner 
-                userPlanner.Weather = null;                          //<<<<<<<<<<when user saves favorite. Need to 
+                userPlanner.Weather = weather.daily.summary;                          //<<<<<<<<<<when user saves favorite. Need to 
                 userPlanner.Events = null;                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
 
                 _context.UserPlanner.Add(userPlanner);
