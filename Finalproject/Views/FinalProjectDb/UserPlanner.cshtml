@@ -11,10 +11,10 @@
     <tr>
         <th>Notes</th>
         <th>Add/Edit</th>
-        <th>Weather</th>
+        <th>Weather (F)</th>
+        <th>Weather Summary</th>
         <th>Restaurants</th>
         <th>Dates</th>
-        <th>Events</th>
         <th>To Remove Line Click Link</th>
     </tr>
     @foreach (var item in Model)
@@ -27,9 +27,9 @@
                 @Html.ActionLink("Edit Notes", "EditNote", "FinalProjectDb", item)
             </td>
             <td>@item.Weather</td>
+            <td>@item.Events</td>
             <td>@item.Restaurants</td>
             <td>@item.Dates</td>
-            <td>@item.Events</td>
             <td>@Html.ActionLink("Remove from List", "RemovePlanner", "FinalProjectDb", item)</td>
         </tr>
     }

@@ -46,6 +46,7 @@ namespace Finalproject.Controllers
                 location.Trim().Replace(" ", "+");
             }
             TempData["day"] = dayy.ToString("yyyy-MM-ddThh:mm:ss");
+            TempData["dayy"] = dayy.ToString("yyyy-MM-dd");
             var response = await client.GetAsync($"maps/api/geocode/json?address={location}&key={_googleApiKey}");
             var name = await response.Content.ReadAsAsync<Location>();
 
@@ -55,7 +56,7 @@ namespace Finalproject.Controllers
             return RedirectToAction("WeatherView", "DarkSky");
         }
         [Authorize]
-        public IActionResult AddFavorite(Datum datum, DarkSky weather)
+        public IActionResult AddFavorite(Datum datum)
         {
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
             UserPlanner userPlanner = new UserPlanner();
@@ -64,10 +65,10 @@ namespace Finalproject.Controllers
             {
                 userPlanner.UserId = thisUser.Id;
                 userPlanner.Restaurants = datum.restaurant_name;
-                userPlanner.Dates = null;                              //<<<<<<<<
+                userPlanner.Dates = TempData["dayy"].ToString();                              //<<<<<<<<
                 userPlanner.Notes = null;                             //<<<<<<<<<This is what gets added to userPlanner 
-                userPlanner.Weather = null;                          //<<<<<<<<<<when user saves favorite. Need to 
-                userPlanner.Events = null;                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
+                userPlanner.Weather = TempData["weather"].ToString();                          //<<<<<<<<<<when user saves favorite. Need to 
+                userPlanner.Events = TempData["weatherSum"].ToString();                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
 
                 _context.UserPlanner.Add(userPlanner);
                 _context.SaveChanges();
