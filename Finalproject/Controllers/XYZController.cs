@@ -30,9 +30,9 @@ namespace Finalproject.Controllers
         }
 
 
-        public async Task<IActionResult> RestaurantSearch(Currently IdontKnow)
+        public async Task<IActionResult> RestaurantSearch()
         {
-            TempData["somethingWeather"] = IdontKnow;
+            
             var client = GetHttpClient();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", $"{_xyzKey}");
 
