@@ -38,6 +38,9 @@ namespace Finalproject.Controllers
 
         public async Task<IActionResult> Map(string location, DateTime dayy)
         {
+            if(location != null && dayy.Year != 0001)
+            {
+
             TempData["yearPast"] = dayy.AddYears(-1).ToString("yyyy-MM-ddThh:mm:ss");
             TempData["yearsPast"] = dayy.AddYears(-5).ToString("yyyy-MM-ddThh:mm:ss");
             var client = GetHttpClient();
@@ -54,6 +57,11 @@ namespace Finalproject.Controllers
             TempData["lng"] = name.results[0].geometry.location.lng;
 
             return RedirectToAction("WeatherView", "DarkSky");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         [Authorize]
         public IActionResult AddFavorite(Datum datum)
