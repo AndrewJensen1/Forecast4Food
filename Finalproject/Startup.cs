@@ -35,8 +35,8 @@ namespace Finalproject
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-           var connection = "Server=.\\SQLExpress;Database=FinalProjectDb;Trusted_Connection=True;ConnectRetryCount=0;";
-           services.AddDbContext<FinalProjectDbContext>(options => options.UseSqlServer(connection));
+           
+           services.AddDbContext<FinalProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

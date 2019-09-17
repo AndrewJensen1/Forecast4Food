@@ -73,10 +73,10 @@ namespace Finalproject.Controllers
             {
                 userPlanner.UserId = thisUser.Id;
                 userPlanner.Restaurants = datum.restaurant_name;
-                userPlanner.Dates = TempData["dayy"].ToString();                              //<<<<<<<<
-                userPlanner.Notes = null;                             //<<<<<<<<<This is what gets added to userPlanner 
-                userPlanner.Weather = TempData["weather"].ToString();                          //<<<<<<<<<<when user saves favorite. Need to 
-                userPlanner.Events = TempData["weatherSum"].ToString();                          //<<<<<<<<<<<fill in fields, can add more parameters if needed
+                userPlanner.Dates = TempData["dayy"].ToString();     
+                userPlanner.Notes = null;                         
+                userPlanner.Weather = TempData["weather"].ToString();    
+                userPlanner.Events = TempData["weatherSum"].ToString();             
 
                 _context.UserPlanner.Add(userPlanner);
                 _context.SaveChanges();
@@ -88,6 +88,7 @@ namespace Finalproject.Controllers
         [Authorize]
         public IActionResult UserPlanner()
         {
+            var thisUserName = User.Identity.Name;
             AspNetUsers thisUser = _context.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First();
             List<UserPlanner> userPlanner = _context.UserPlanner.Where(u => u.UserId == thisUser.Id).ToList();
             return View(userPlanner);
