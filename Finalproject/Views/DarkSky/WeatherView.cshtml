@@ -6,10 +6,10 @@
 
 
 
-<h3>Based on the date entered, we project this day to have a @ViewBag.rating percent chance of being a nice day!</h3>
-<div class="table-dark table-bordered table-warning" style="color:azure">
+    <h3>Based on your destination and date, Forecast4Food gives this day a score of <span>@ViewBag.rating</span>% for good weather</h3>
 
-    <table>
+
+    <table class="table-dark table-bordered table-warning" style="color:azure">
         <tr>
             <th></th>
             <th>Temperature</th>
@@ -43,7 +43,7 @@
             <td>@ViewBag.fiveYearSumm</td>
         </tr>
     </table>
-</div>
+
 
 @if (Model.currently.temperature >= 80 && Model.currently.summary.ToLower().Contains("clear"))
 {
@@ -52,9 +52,10 @@
         of nearby restaurants we recommend?
     </h3>
   
-
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+    <p> @Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p> @Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+   
+   
 
 
 }
@@ -64,8 +65,9 @@ else if (Model.currently.temperature >= 80 && Model.currently.summary.ToLower().
         It looks like its gonna be hot and rainy on this day. Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
 }
 else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.ToLower().Contains("rain"))
 {
@@ -73,8 +75,10 @@ else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 &
         It looks like its gonna be warm and rainy on this day. Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
+    
 }
 else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 && Model.currently.summary.ToLower().Contains("clear"))
 {
@@ -82,8 +86,11 @@ else if (Model.currently.temperature < 80 && Model.currently.temperature >= 60 &
         It looks like its gonna be clear and warm on this day. Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
+    
 }
 else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.ToLower().Contains("rain"))
 {
@@ -91,8 +98,11 @@ else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 &&
         It looks like its gonna be pretty chilly and rainy on this day. Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
+    
 }
 else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 && Model.currently.summary.ToLower().Contains("clear"))
 {
@@ -100,8 +110,11 @@ else if (Model.currently.temperature < 60 && Model.currently.temperature > 32 &&
         It looks like its gonna be pretty chilly clear on this day. Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
+    
 }
 else if (Model.currently.temperature < 32)
 {
@@ -109,15 +122,46 @@ else if (Model.currently.temperature < 32)
         It looks like its gonna be freezing on this day! Would you like to see a list
         of nearby restaurants we recommend?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Home")
+
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Home")</p>
+    
+    
 }
 else
 {
     <h3>
         Would you like to see a list of nearby restaurants?
     </h3>
-    @Html.ActionLink("Yes, let me see them!", "RestaurantSearch", "XYZ", Model.currently)
-    @Html.ActionLink("No, take me back to location search.", "Index", "Homess")
+    <p>@Html.ActionLink("Let me see them!", "RestaurantSearch", "XYZ", Model.currently)</p>
+    <p>@Html.ActionLink("Take me back to location search.", "Index", "Homess")</p>
+    
+    
 }
 
+<style>
+    p a {
+        color: ghostwhite;
+        text-shadow: 2px 2px #000000;
+        font-size: 18px;
+    }
+
+    table{
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    div{
+        text-align:center;
+    }
+
+    span{
+        color:greenyellow;
+    }
+
+    h3{
+        padding-bottom:10px;
+    }
+   
+</style>
