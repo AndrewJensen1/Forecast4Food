@@ -2,7 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h3>Please enter a location and date.</h3>
+<h3>Enter a (US) destination and date</h3>
+<h4>to see an overview of the weather</h4>
 <form asp-controller="FinalProjectDb" asp-action="Map">
     <input type="text" name="Location" placeholder="Enter Location" />
     <input type="date" name="dayy" value="" />
@@ -11,9 +12,13 @@
 
 <style>
 
-    h3 {
+    h3{
         text-align: center;
         padding: 160px 0px 0px 0px;
+    }
+
+    h4, h5{
+        text-align:center;
     }
 
     form{
